@@ -12,10 +12,18 @@ type Props = {
 
 const HomeScreen = ({ navigation }: Props) => (
   <Background>
-    <Logo />
-    <Header>Login Template</Header>
+    <Header>Welcome to RE-MED Community</Header>
 
-    <Paragraph>The easiest way to start with your amazing application.</Paragraph>
+    <Paragraph>
+      The RE-MED Project has benefited from funding from the EUROPEAN UNION, ENI CBC MED PROGRAM
+      (Education, Research, Technological development and innovation)
+    </Paragraph>
+    <Paragraph>
+      Under SUBSIDY AGREEMENT N°28/1682
+    </Paragraph>
+
+    <Logo />
+    
     <Button mode='contained' onPress={() => navigation.navigate('LoginScreen')}>
       Login
     </Button>
