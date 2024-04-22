@@ -4,7 +4,7 @@ export const theme: MD3Theme = {
   ...DefaultTheme,
   colors: {
     ...DefaultTheme.colors,
-    primary: '#600EE6',
+    primary: '#4fa166',
     secondary: '#414757',
     error: '#f13a59',
   },
