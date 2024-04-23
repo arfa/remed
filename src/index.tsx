@@ -17,7 +17,7 @@ import {
 function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName='Home'>
+      <Stack.Navigator initialRouteName='Home' screenOptions={{ headerTitleAlign: 'center' }}>
         <Stack.Screen
           name='HomeScreen'
           component={HomeScreen}
@@ -42,7 +42,6 @@ function App() {
                 />
               );
             },
-            headerTitleAlign: 'center',
           })}
         />
         <Stack.Screen name='SettingsScreen' component={Settings} />
