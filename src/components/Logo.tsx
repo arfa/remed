@@ -1,13 +1,19 @@
 import React, { memo } from 'react';
-import { Image, StyleSheet } from 'react-native';
+import { ImageBackground, StyleSheet } from 'react-native';
 
-const Logo = () => <Image source={require('../assets/partners.png')} style={styles.image} />;
+const Logo = () => (
+  <ImageBackground
+    source={require('../assets/partners_color.png')}
+    style={styles.image}
+    resizeMode='cover'
+  />
+);
 
 const styles = StyleSheet.create({
   image: {
-    width: 128,
-    height: 128,
-    marginBottom: 12,
+    flex: 1,
+    width: '100%',
+    height: 100,
   },
 });
 
