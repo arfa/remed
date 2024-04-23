@@ -4,7 +4,7 @@ import Logo from '../components/Logo';
 import Paragraph from '../components/Paragraph';
 import { Navigation } from '../types';
 import { Linking, Text, TouchableOpacity, StyleSheet, View } from 'react-native';
-import { theme } from '../core/theme';
+import { brandColors } from '../core/theme';
 import { Divider } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
 
@@ -76,7 +76,7 @@ const SettingsScreen = ({ navigation }: Props) => {
 
 const styles = StyleSheet.create({
   label: {
-    color: theme.colors.primary,
+    color: brandColors.primary,
     textDecorationLine: 'underline',
     fontWeight: 'bold',
   },

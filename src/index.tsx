@@ -13,11 +13,20 @@ import {
   Settings,
   About,
 } from './screens';
+import { useTheme } from 'react-native-paper';
 
 function App() {
+  const theme = useTheme();
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName='Home' screenOptions={{ headerTitleAlign: 'center' }}>
+      <Stack.Navigator
+        initialRouteName='Home'
+        screenOptions={{
+          headerTitleAlign: 'center',
+          headerStyle: { backgroundColor: theme.colors.background },
+          headerTintColor: theme.colors.inverseSurface,
+        }}
+      >
         <Stack.Screen
           name='HomeScreen'
           component={HomeScreen}
@@ -28,7 +37,7 @@ function App() {
                   onPress={() => navigation.navigate('SettingsScreen')}
                   name='setting'
                   size={24}
-                  color='black'
+                  color={theme.colors.inverseSurface}
                 />
               );
             },
@@ -38,7 +47,7 @@ function App() {
                   onPress={() => navigation.navigate('AboutScreen')}
                   name='infocirlceo'
                   size={24}
-                  color='black'
+                  color={theme.colors.inverseSurface}
                 />
               );
             },

@@ -4,7 +4,7 @@ import Background from '../components/Background';
 import Header from '../components/Header';
 import Button from '../components/Button';
 import TextInput from '../components/TextInput';
-import { theme } from '../core/theme';
+import { brandColors } from '../core/theme';
 import { Navigation } from '../types';
 import { emailValidator, passwordValidator, nameValidator } from '../core/utils';
 
@@ -84,7 +84,7 @@ const RegisterScreen = ({ navigation }: Props) => {
 
 const styles = StyleSheet.create({
   label: {
-    color: theme.colors.secondary,
+    color: brandColors.secondary,
   },
   button: {
     marginTop: 24,
@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
   },
   link: {
     fontWeight: 'bold',
-    color: theme.colors.primary,
+    color: brandColors.primary,
   },
 });
 

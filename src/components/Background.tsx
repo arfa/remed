@@ -1,21 +1,22 @@
 import { memo, ReactNode } from 'react';
-import { ImageBackground, StyleSheet, KeyboardAvoidingView } from 'react-native';
+import { StyleSheet, KeyboardAvoidingView, View } from 'react-native';
+import { useTheme } from 'react-native-paper';
 
 type Props = {
   children: ReactNode;
 };
 
-const Background = ({ children }: Props) => (
-  <ImageBackground
-    source={require('../assets/background_dot.png')}
-    resizeMode='repeat'
-    style={styles.background}
+const Background = ({ children }: Props) => {
+  const theme = useTheme();
+  return(
+  <View
+    style={{...styles.background, backgroundColor: theme.colors.background}}
   >
     <KeyboardAvoidingView style={styles.container} behavior='padding'>
       {children}
     </KeyboardAvoidingView>
-  </ImageBackground>
-);
+  </View>
+)};
 
 const styles = StyleSheet.create({
   background: {
@@ -24,12 +25,11 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    padding: 10,
+    padding: 30,
     width: '100%',
-    maxWidth: 340,
     alignSelf: 'center',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
   },
 });
 

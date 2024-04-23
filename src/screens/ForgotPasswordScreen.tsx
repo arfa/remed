@@ -4,7 +4,7 @@ import { emailValidator } from '../core/utils';
 import Background from '../components/Background';
 import Header from '../components/Header';
 import TextInput from '../components/TextInput';
-import { theme } from '../core/theme';
+import { brandColors } from '../core/theme';
 import Button from '../components/Button';
 import { Navigation } from '../types';
 
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     marginTop: 12,
   },
   label: {
-    color: theme.colors.secondary,
+    color: brandColors.secondary,
     width: '100%',
   },
 });
