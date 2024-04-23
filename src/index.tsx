@@ -14,9 +14,12 @@ import {
   About,
 } from './screens';
 import { useTheme } from 'react-native-paper';
+import { useColorScheme } from 'react-native';
 
 function App() {
   const theme = useTheme();
+  const colorScheme = useColorScheme();
+
   return (
     <NavigationContainer>
       <Stack.Navigator
@@ -25,6 +28,8 @@ function App() {
           headerTitleAlign: 'center',
           headerStyle: { backgroundColor: theme.colors.background },
           headerTintColor: theme.colors.inverseSurface,
+          statusBarColor: theme.colors.background,
+          statusBarStyle: colorScheme === 'dark' ? 'light' : 'dark',
         }}
       >
         <Stack.Screen
