@@ -34,43 +34,45 @@ const SettingsScreen = ({ navigation }: Props) => {
     retrieveData();
   }, []);
 
-  const saveData = async () => {
+  const saveData = async (value: string) => {
     await storage.save({
       key: 'LANGUAGE', // Note: Do not use underscore("_") in key!
-      data: selectedLanguage,
+      data: value,
     });
   };
 
   return (
     <Background>
       <View style={styles.lang}>
-        <Text style={styles.title}> {t('LANGUAGE')}</Text>
-
-        <FlatList
-          data={languages}
-          renderItem={({ item }) => (
-            <TouchableOpacity
-              onPress={() => {
-                i18next.changeLanguage(item.value); // it will change the language through out the app.
-                setSelectedLanguage(item.value);
-                saveData();
-              }}
-            >
-              <List.Item
-                titleStyle={selectedLanguage === item.value ? styles.selectedText : styles.text}
-                title={item.label}
-                left={(props) => (
-                  <List.Icon
-                    {...props}
-                    icon={() => (
-                      <CountryFlag isoCode={item.value === 'en' ? 'us' : item.value} size={25} />
-                    )}
-                  />
-                )}
-              />
-            </TouchableOpacity>
-          )}
-        />
+        <List.Section>
+          <List.Subheader style={styles.title}> {t('LANGUAGE')}</List.Subheader>
+          <FlatList
+            data={languages}
+            renderItem={({ item }) => (
+              <TouchableOpacity
+                onPress={() => {
+                  i18next.changeLanguage(item.value); // it will change the language through out the app.
+                  setSelectedLanguage(item.value);
+                  saveData(item.value);
+                }}
+                style={selectedLanguage === item.value ? styles.selectedLanguage : styles.language}
+              >
+                <List.Item
+                  titleStyle={selectedLanguage === item.value ? styles.selectedText : styles.text}
+                  title={item.label}
+                  left={(props) => (
+                    <List.Icon
+                      {...props}
+                      icon={() => (
+                        <CountryFlag isoCode={item.value === 'en' ? 'us' : item.value} size={25} />
+                      )}
+                    />
+                  )}
+                />
+              </TouchableOpacity>
+            )}
+          />
+        </List.Section>
       </View>
     </Background>
   );
@@ -86,7 +88,7 @@ const styles = StyleSheet.create({
     borderStyle: 'solid',
   },
   title: {
-    paddingTop: 34,
+    paddingTop: 20,
     paddingBottom: 20,
 
     fontStyle: 'normal',
@@ -97,17 +99,11 @@ const styles = StyleSheet.create({
   },
 
   language: {
-    padding: 10,
     backgroundColor: '#fff',
-    borderBottomWidth: 1,
-    borderBottomColor: '#ccc',
   },
   selectedLanguage: {
-    padding: 10,
     backgroundColor: theme.colors.primary,
     color: '#fff',
-    borderBottomWidth: 1,
-    borderBottomColor: '#ccc',
   },
   text: {
     fontSize: 14,
@@ -115,7 +111,7 @@ const styles = StyleSheet.create({
   },
   selectedText: {
     fontSize: 14,
-    color: theme.colors.primary,
+    color: '#fff',
     fontWeight: 'bold',
   },
 });
