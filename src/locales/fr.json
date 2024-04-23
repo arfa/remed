@@ -1,7 +1,9 @@
 {
   "translation": {
+    "WELCOME_TO_REMED": "Bienvenue sur RE-MED",
     "CANCEL": "Annuler",
     "LOGIN": "Se connecter",
+    "SIGNUP": "S'inscrire",
     "SAVE": "Enregistrer",
     "LOGOUT": "Se déconnecter",
     "SETTING": "Paramètres",
@@ -17,8 +19,9 @@
     "CONFIRM": "Confirmer",
     "VISIT": "Visiter notre",
     "WEBSITE": "site web",
-    "CHECK": "Vérifier tous les points",
+    "CHECK_OUT": "Vérifier tous nos",
+    "POINTS_REMED": "points RE-MED",
     "LEARN_MORE": "En savoir plus",
-    "ABOUT": "À propos de nous"
+    "ABOUT_US": "À propos de nous"
   }
 }

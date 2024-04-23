@@ -1,7 +1,9 @@
 {
   "translation": {
+    "WELCOME_TO_REMED": "Welcome to RE-MED Community",
     "CANCEL": "Cancel",
     "LOGIN": "Login",
+    "SIGNUP": "Register",
     "SAVE": "Save",
     "LOGOUT": "Logout",
     "SETTING": "Settings",
@@ -17,8 +19,9 @@
     "CONFIRM": "Confirm",
     "VISIT": "Visit our",
     "WEBSITE": "Website",
-    "CHECK": "Check out our points",
+    "CHECK_OUT": "Check out our",
+    "POINTS_REMED": "RE-MED points",
     "LEARN_MORE": "Learn more",
-    "ABOUT": "About us"
+    "ABOUT_US": "About us"
   }
 }

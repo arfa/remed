@@ -6,12 +6,15 @@ import { Navigation } from '../types';
 import { Linking, Text, TouchableOpacity, StyleSheet, View } from 'react-native';
 import { theme } from '../core/theme';
 import { Divider } from 'react-native-paper';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   navigation: Navigation;
 };
 
 const SettingsScreen = ({ navigation }: Props) => {
+  const { t } = useTranslation();
+
   return (
     <Background>
       <Paragraph>
@@ -26,10 +29,10 @@ const SettingsScreen = ({ navigation }: Props) => {
             fontWeight: 'bold',
           }}
         >
-          Visit our{' '}
+          {t('VISIT')}{' '}
         </Text>
         <TouchableOpacity onPress={() => Linking.openURL('https://mywebsite.com/help')}>
-          <Text style={styles.label}>Website</Text>
+          <Text style={styles.label}>{t('WEBSITE')}</Text>
         </TouchableOpacity>
       </View>
 
@@ -41,10 +44,10 @@ const SettingsScreen = ({ navigation }: Props) => {
             fontWeight: 'bold',
           }}
         >
-          Check all the actual{' '}
+          {t('CHECK_OUT')}{' '}
         </Text>
         <TouchableOpacity onPress={() => Linking.openURL('https://mywebsite.com/help')}>
-          <Text style={styles.label}>RE-MED points</Text>
+          <Text style={styles.label}>{t('POINTS_REMED')}</Text>
         </TouchableOpacity>
       </View>
 
@@ -56,13 +59,13 @@ const SettingsScreen = ({ navigation }: Props) => {
             fontWeight: 'bold',
           }}
         >
-          Learn more{' '}
+          {t('LEARN_MORE')}{' '}
         </Text>
         <TouchableOpacity
           onPress={() => Linking.openURL('https://mywebsite.com/help')}
           style={{ marginBottom: 50 }}
         >
-          <Text style={styles.label}>About us</Text>
+          <Text style={styles.label}>{t('ABOUT_US')}</Text>
         </TouchableOpacity>
       </View>
 
