@@ -4,96 +4,73 @@ import { Navigation } from '../types';
 import { useTranslation } from 'react-i18next';
 import { Text, View, StyleSheet, FlatList, TouchableOpacity, Alert } from 'react-native';
 import i18next from 'i18next';
+import storage from '../core/storage';
+import { theme } from '../core/theme';
+import { List } from 'react-native-paper';
+import CountryFlag from 'react-native-country-flag';
 
 type Props = {
   navigation: Navigation;
 };
 
+const languages = [
+  { label: 'English', value: 'en' },
+  { label: 'French', value: 'fr' },
+];
+
 const SettingsScreen = ({ navigation }: Props) => {
   const { t } = useTranslation();
-  const languages = [
-    { label: 'English', value: 'en' },
-    { label: 'French', value: 'fr' },
-
-    // Add more languages as needed
-  ];
   const [selectedLanguage, setSelectedLanguage] = useState('');
+
   useEffect(() => {
-    setSelectedLanguage(i18next.language);
+    const retrieveData = async () => {
+      try {
+        const value = await storage.load({ key: 'LANGUAGE' });
+        setSelectedLanguage(value);
+      } catch (error) {
+        setSelectedLanguage(i18next.language);
+      }
+    };
+    retrieveData();
   }, []);
+
+  const saveData = async () => {
+    await storage.save({
+      key: 'LANGUAGE', // Note: Do not use underscore("_") in key!
+      data: selectedLanguage,
+    });
+  };
 
   return (
     <Background>
       <View style={styles.lang}>
-        <Text style={styles.sTitle1}> {t('LANGUAGE')}</Text>
-        <Text style={styles.sTitle2}>{t('SELECT')} </Text>
+        <Text style={styles.title}> {t('LANGUAGE')}</Text>
 
         <FlatList
           data={languages}
           renderItem={({ item }) => (
             <TouchableOpacity
               onPress={() => {
+                i18next.changeLanguage(item.value); // it will change the language through out the app.
                 setSelectedLanguage(item.value);
+                saveData();
               }}
-              style={selectedLanguage === item.value ? styles.selectedLanguage : styles.language}
             >
-              <Text style={selectedLanguage === item.value ? styles.selectedText : styles.text}>
-                {item.label}
-              </Text>
+              <List.Item
+                titleStyle={selectedLanguage === item.value ? styles.selectedText : styles.text}
+                title={item.label}
+                left={(props) => (
+                  <List.Icon
+                    {...props}
+                    icon={() => (
+                      <CountryFlag isoCode={item.value === 'en' ? 'us' : item.value} size={25} />
+                    )}
+                  />
+                )}
+              />
             </TouchableOpacity>
           )}
         />
-
-        <View style={styles.btns}>
-          <TouchableOpacity
-            style={{
-              width: 143,
-              height: 48,
-              borderWidth: 1,
-              borderRadius: 8,
-              alignItems: 'center',
-              justifyContent: 'center',
-              borderColor: '#FF5757',
-              borderStyle: 'solid',
-            }}
-          >
-            <Text
-              style={{
-                
-                fontStyle: 'normal',
-
-                color: '#FF5757',
-              }}
-            >
-              {t('CANCEL')}
-            </Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            onPress={() => {
-              i18next.changeLanguage(selectedLanguage); // it will change the language through out the app.
-            }}
-            style={{
-              width: 150,
-              height: 48,
-              borderWidth: 0.5,
-              borderRadius: 10,
-              justifyContent: 'center',
-              alignItems: 'center',
-              backgroundColor: '#2352D8',
-            }}
-          >
-            <Text
-              style={{
-                color: '#F7F9FA',
-                
-                fontStyle: 'normal',
-              }}
-            >
-              {t('SAVE')}
-            </Text>
-          </TouchableOpacity>
-        </View>
       </View>
     </Background>
   );
@@ -104,58 +81,19 @@ const styles = StyleSheet.create({
     width: 365,
     backgroundColor: '#FFFFFF',
 
-    // border: 1px solid #E9EDF2;
     borderWidth: 1,
     borderColor: '#E9EDF2',
-    borderRadius: 16,
     borderStyle: 'solid',
   },
-  sTitle1: {
+  title: {
     paddingTop: 34,
-    
+    paddingBottom: 20,
+
     fontStyle: 'normal',
 
     paddingLeft: 30,
     fontSize: 14,
     color: '#A8B4BF',
-  },
-  sTitle2: {
-    paddingTop: 20,
-    paddingBottom: 20,
-    
-    fontStyle: 'normal',
-    paddingLeft: 30,
-    fontSize: 12,
-
-    color: '#576573',
-  },
-  languageItem: {
-    height: 50,
-
-    top: 20,
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingLeft: 30,
-  },
-  texts: {
-    
-    fontStyle: 'normal',
-    color: '#576573',
-
-    fontSize: 14,
-  },
-  icon: {
-    width: 24,
-    height: 24,
-  },
-  btns: {
-    flexDirection: 'row',
-
-    width: '100%',
-    justifyContent: 'space-evenly',
-    alignItems: 'center',
-    marginTop: 20,
-    marginBottom: 20,
   },
 
   language: {
@@ -166,7 +104,8 @@ const styles = StyleSheet.create({
   },
   selectedLanguage: {
     padding: 10,
-    backgroundColor: '#eee',
+    backgroundColor: theme.colors.primary,
+    color: '#fff',
     borderBottomWidth: 1,
     borderBottomColor: '#ccc',
   },
@@ -176,7 +115,7 @@ const styles = StyleSheet.create({
   },
   selectedText: {
     fontSize: 14,
-    color: 'red',
+    color: theme.colors.primary,
     fontWeight: 'bold',
   },
 });

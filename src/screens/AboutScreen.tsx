@@ -17,6 +17,8 @@ const SettingsScreen = ({ navigation }: Props) => {
 
   return (
     <Background>
+      <Logo />
+
       <Paragraph>
         The RE-MED Project has benefited from funding from the EUROPEAN UNION, ENI CBC MED PROGRAM
         (Education, Research, Technological development and innovation)
@@ -68,8 +70,6 @@ const SettingsScreen = ({ navigation }: Props) => {
           <Text style={styles.label}>{t('ABOUT_US')}</Text>
         </TouchableOpacity>
       </View>
-
-      <Logo />
     </Background>
   );
 };
