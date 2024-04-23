@@ -1,0 +1,24 @@
+{
+  "translation": {
+    "CANCEL": "Cancel",
+    "LOGIN": "Login",
+    "SAVE": "Save",
+    "LOGOUT": "Logout",
+    "SETTING": "Settings",
+    "LANGUAGE": "Language",
+    "ENGLISH": "English",
+    "FRENCH": "French",
+    "WELCOME": "Welcome",
+    "USERNAME": "Username",
+    "PASSWORD": "Password",
+    "INVALID_CREDENTIALS": "Invalid credentials",
+    "ERROR": "Error",
+    "OK": "OK",
+    "CONFIRM": "Confirm",
+    "VISIT": "Visit our",
+    "WEBSITE": "Website",
+    "CHECK": "Check out our points",
+    "LEARN_MORE": "Learn more",
+    "ABOUT": "About us"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "translation": {
+    "CANCEL": "Annuler",
+    "LOGIN": "Se connecter",
+    "SAVE": "Enregistrer",
+    "LOGOUT": "Se déconnecter",
+    "SETTING": "Paramètres",
+    "LANGUAGE": "Langue",
+    "ENGLISH": "Anglais",
+    "FRENCH": "Français",
+    "WELCOME": "Bienvenue",
+    "USERNAME": "Nom d'utilisateur",
+    "PASSWORD": "Mot de passe",
+    "INVALID_CREDENTIALS": "Nom d'utilisateur ou mot de passe invalide",
+    "ERROR": "Erreur",
+    "OK": "OK",
+    "CONFIRM": "Confirmer",
+    "VISIT": "Visiter notre",
+    "WEBSITE": "site web",
+    "CHECK": "Vérifier tous les points",
+    "LEARN_MORE": "En savoir plus",
+    "ABOUT": "À propos de nous"
+  }
+}
