@@ -59,7 +59,7 @@ const SettingsScreen = ({ navigation }: Props) => {
           >
             <Text
               style={{
-                fontFamily: 'Manrope',
+                
                 fontStyle: 'normal',
 
                 color: '#FF5757',
@@ -86,7 +86,7 @@ const SettingsScreen = ({ navigation }: Props) => {
             <Text
               style={{
                 color: '#F7F9FA',
-                fontFamily: 'Manrope',
+                
                 fontStyle: 'normal',
               }}
             >
@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
   },
   sTitle1: {
     paddingTop: 34,
-    fontFamily: 'Manrope',
+    
     fontStyle: 'normal',
 
     paddingLeft: 30,
@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
   sTitle2: {
     paddingTop: 20,
     paddingBottom: 20,
-    fontFamily: 'Manrope',
+    
     fontStyle: 'normal',
     paddingLeft: 30,
     fontSize: 12,
@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
     paddingLeft: 30,
   },
   texts: {
-    fontFamily: 'Manrope',
+    
     fontStyle: 'normal',
     color: '#576573',
 
