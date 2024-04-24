@@ -3,7 +3,7 @@ import { Navigation } from '../../types';
 import { useTranslation } from 'react-i18next';
 import { View, FlatList, TouchableOpacity, Appearance, ColorSchemeName } from 'react-native';
 import storage from '../../core/storage';
-import { List, useTheme } from 'react-native-paper';
+import { Card, List, useTheme } from 'react-native-paper';
 import { settingsStyles } from './styles';
 
 type Props = {
@@ -45,49 +45,57 @@ const SettingsDarkMode = ({ navigation }: Props) => {
   };
 
   return (
-    <View style={settingsStyles.lang}>
-      <List.Section>
-        <List.Subheader style={settingsStyles.title}> {t('DARK_MODE')}</List.Subheader>
-        <FlatList
-          data={colorsSchemes}
-          renderItem={({ item }) => (
-            <TouchableOpacity
-              onPress={() => {
-                saveTheme(item.value);
-                setNativeColorScheme(item.value);
-                Appearance.setColorScheme(item.value as ColorSchemeName);
-              }}
-              style={
-                nativeColorScheme === item.value
-                  ? settingsStyles.selectedLanguage
-                  : { backgroundColor: theme.colors.background }
-              }
-            >
-              <List.Item
-                titleStyle={
+    <Card
+      style={{
+        width: '100%',
+        marginBottom: 20,
+      }}
+      elevation={0}
+    >
+      <Card.Content>
+        <List.Section>
+          <List.Subheader style={settingsStyles.title}> {t('DARK_MODE')}</List.Subheader>
+          <FlatList
+            data={colorsSchemes}
+            renderItem={({ item }) => (
+              <TouchableOpacity
+                onPress={() => {
+                  saveTheme(item.value);
+                  setNativeColorScheme(item.value);
+                  Appearance.setColorScheme(item.value as ColorSchemeName);
+                }}
+                style={
                   nativeColorScheme === item.value
-                    ? { color: theme.colors.surface }
-                    : { color: theme.colors.inverseSurface }
+                    ? settingsStyles.selectedLanguage
+                    : { backgroundColor: theme.colors.background }
                 }
-                title={item.label}
-                left={(props) => (
-                  <List.Icon
-                    {...props}
-                    icon={
-                      item.value === 'light'
-                        ? 'weather-sunny'
-                        : item.value === 'dark'
-                        ? 'moon-waxing-crescent'
-                        : 'monitor-screenshot'
-                    }
-                  />
-                )}
-              />
-            </TouchableOpacity>
-          )}
-        />
-      </List.Section>
-    </View>
+              >
+                <List.Item
+                  titleStyle={
+                    nativeColorScheme === item.value
+                      ? { color: theme.colors.surface }
+                      : { color: theme.colors.inverseSurface }
+                  }
+                  title={item.label}
+                  left={(props) => (
+                    <List.Icon
+                      {...props}
+                      icon={
+                        item.value === 'light'
+                          ? 'weather-sunny'
+                          : item.value === 'dark'
+                          ? 'moon-waxing-crescent'
+                          : 'monitor-screenshot'
+                      }
+                    />
+                  )}
+                />
+              </TouchableOpacity>
+            )}
+          />
+        </List.Section>
+      </Card.Content>
+    </Card>
   );
 };
 

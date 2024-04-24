@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { View, FlatList, TouchableOpacity } from 'react-native';
 import i18next from 'i18next';
 import storage from '../../core/storage';
-import { List, useTheme } from 'react-native-paper';
+import { Card, List, useTheme } from 'react-native-paper';
 import CountryFlag from 'react-native-country-flag';
 import { settingsStyles } from './styles';
 
@@ -44,7 +44,15 @@ const SettingsLang = ({ navigation }: Props) => {
   };
 
   return (
-    <View style={{ ...settingsStyles.lang, backgroundColor: theme.colors.background }}>
+    <Card
+      style={{
+        width: '100%',
+        marginBottom: 20,
+      }}
+      elevation={0}
+    >
+      <Card.Content>
+
       <List.Section>
         <List.Subheader style={settingsStyles.title}> {t('LANGUAGE')}</List.Subheader>
         <FlatList
@@ -84,7 +92,8 @@ const SettingsLang = ({ navigation }: Props) => {
           )}
         />
       </List.Section>
-    </View>
+    </Card.Content>
+  </Card>
   );
 };
 
