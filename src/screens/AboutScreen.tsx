@@ -5,7 +5,7 @@ import Paragraph from '../components/Paragraph';
 import { Navigation } from '../types';
 import { Linking, Text, TouchableOpacity, StyleSheet, View } from 'react-native';
 import { brandColors } from '../core/theme';
-import { Divider } from 'react-native-paper';
+import { Divider, useTheme } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
 
 type Props = {
@@ -14,6 +14,8 @@ type Props = {
 
 const SettingsScreen = ({ navigation }: Props) => {
   const { t } = useTranslation();
+  const theme = useTheme();
+
 
   return (
     <Background>
@@ -29,6 +31,7 @@ const SettingsScreen = ({ navigation }: Props) => {
         <Text
           style={{
             fontWeight: 'bold',
+            color: theme.colors.secondary,
           }}
         >
           {t('VISIT')}{' '}
@@ -44,6 +47,7 @@ const SettingsScreen = ({ navigation }: Props) => {
         <Text
           style={{
             fontWeight: 'bold',
+            color: theme.colors.secondary,
           }}
         >
           {t('CHECK_OUT')}{' '}
@@ -59,6 +63,7 @@ const SettingsScreen = ({ navigation }: Props) => {
         <Text
           style={{
             fontWeight: 'bold',
+            color: theme.colors.secondary,
           }}
         >
           {t('LEARN_MORE')}{' '}
