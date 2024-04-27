@@ -30,6 +30,7 @@ function App() {
           headerTintColor: theme.colors.inverseSurface,
           statusBarColor: theme.colors.background,
           statusBarStyle: colorScheme === 'dark' ? 'light' : 'dark',
+          animation: 'slide_from_right',
         }}
       >
         <Stack.Screen

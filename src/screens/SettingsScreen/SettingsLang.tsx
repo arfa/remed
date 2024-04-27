@@ -1,7 +1,7 @@
 import React, { memo, useEffect, useState } from 'react';
 import { Navigation } from '../../types';
 import { useTranslation } from 'react-i18next';
-import { View, FlatList, TouchableOpacity } from 'react-native';
+import { FlatList, TouchableOpacity } from 'react-native';
 import i18next from 'i18next';
 import storage from '../../core/storage';
 import { Card, List, useTheme } from 'react-native-paper';
